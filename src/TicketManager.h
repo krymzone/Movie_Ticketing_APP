@@ -11,4 +11,4 @@ public:
     virtual void loadTickets(const std::string& filename) = 0;
 };
 
-#endif // TICKETMANAGER_H
+#endif

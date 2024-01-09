@@ -22,4 +22,4 @@ private:
     bool deserializeTicket(std::istream& stream, Ticket& ticket) const;
 };
 
-#endif // TICKETMANAGERIMPL_H
+#endif

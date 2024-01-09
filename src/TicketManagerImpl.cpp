@@ -14,7 +14,6 @@ void TicketManagerImpl::saveTickets(const std::string& filename) const {
         return;
     }
 
-    // Serialize and save ticket information to the file
     for (const Ticket& ticket : tickets) {
         serializeTicket(outFile, ticket);
     }
@@ -30,7 +29,6 @@ void TicketManagerImpl::loadTickets(const std::string& filename) {
         return;
     }
 
-    // Deserialize and load ticket information from the file
     Ticket ticket;
     while (deserializeTicket(inFile, ticket)) {
         tickets.push_back(ticket);

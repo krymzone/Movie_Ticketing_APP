@@ -23,7 +23,6 @@ public:
 
     void printEventInfo() const;
 
-    // Implement pure virtual methods from TicketManager
     void saveTickets(const std::string& filename) const override;
     void loadTickets(const std::string& filename) override;
 

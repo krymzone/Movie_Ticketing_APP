@@ -39,14 +39,13 @@ int EventLocation::getAvailableSeats() const {
 
 bool EventLocation::isSeatAvailable(int row, int seat) const {
     if (row < 1 || row > numRows || seat < 1 || seat > seatsPerRow[row - 1]) {
-        return false; // Invalid row or seat
+        return false;
     }
 
-    return !seatingArrangement[row - 1][seat - 1]; // Check if the seat is occupied
+    return !seatingArrangement[row - 1][seat - 1];
 }
 
 void EventLocation::markSeatOccupied(int row, int seat) {
-    // Mark the seat as occupied
     seatingArrangement[row - 1][seat - 1] = true;
 }
 
@@ -87,7 +86,7 @@ void EventLocation::printLocationInfo() const {
     std::cout << "Number of Rows: " << numRows << std::endl;
     std::cout << "Number of Zones: " << numZones << std::endl;
     std::cout << "Seats per Row: ";
-    for (const auto& seats : this->seatsPerRow) {  // Use this->seatsPerRow
+    for (const auto& seats : this->seatsPerRow) {
         std::cout << seats << " ";
     }
     std::cout << std::endl;
@@ -101,7 +100,6 @@ void EventLocation::saveTickets(const std::string& filename) const {
         return;
     }
 
-    // Serialize and save location-specific ticket information to the file
     outFile.write(reinterpret_cast<const char*>(this), sizeof(EventLocation));
 
     outFile.close();
@@ -119,7 +117,7 @@ void EventLocation::loadTickets(const std::string& filename) {
     inFile.read(reinterpret_cast<char*>(&numRows), sizeof(numRows));
     inFile.read(reinterpret_cast<char*>(&numZones), sizeof(numZones));
 
-    for (auto& seatsInRow : this->seatsPerRow) {  // Use this->seatsPerRow
+    for (auto& seatsInRow : this->seatsPerRow) { 
         inFile.read(reinterpret_cast<char*>(&seatsInRow), sizeof(seatsInRow));
     }
 

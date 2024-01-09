@@ -24,7 +24,6 @@ void VIPEvent::saveTickets(const std::string& filename) const {
         return;
     }
 
-    // Serialize and save VIP event-specific ticket information to the file
     outFile.write(reinterpret_cast<const char*>(this), sizeof(VIPEvent));
 
     outFile.close();

@@ -32,7 +32,6 @@ public:
     bool isSeatAvailable(int row, int seat) const;
     void markSeatOccupied(int row, int seat);
 
-    // Implement pure virtual methods from TicketManager
     void saveTickets(const std::string& filename) const override;
     void loadTickets(const std::string& filename) override;
 };
