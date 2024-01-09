@@ -1,33 +1,41 @@
 #ifndef TICKET_H
 #define TICKET_H
 
-#include <vector>
+#include "TicketManager.h"  // Include the new abstract class
 #include <string>
 
-class Ticket {
+class Ticket : public TicketManager {
 private:
     static int nextTicketID;
-    const int ticketID;
+    int ticketID;
     std::string ticketType;
-    // Add other ticket-related attributes as needed
+    int row;
+    int seat;
 
 public:
+    // Constructors
     Ticket();
-    Ticket(const std::string& ticketType);
+    Ticket(const std::string& ticketType);  // New constructor
+    Ticket(const std::string& ticketType, int row, int seat);
 
     // Accessors
     int getTicketID() const;
     const std::string& getTicketType() const;
 
-    // Validation functions
+    // Mutator
     void setTicketType(const std::string& ticketType);
 
-    // Other methods
-    static void printTicketInfo(const Ticket& ticket);
-    void processTicketData();
-
-    // Overloaded operators
+    // Additional functions
+    void printTicketInfo() const;
     bool operator==(const Ticket& other) const;
+
+    // Implement pure virtual methods from TicketManager
+    void saveTickets(const std::string& filename) const override;
+    void loadTickets(const std::string& filename) override;
+
+    // Destructor
+    ~Ticket() = default; // Add a destructor
+
     // Add other overloaded operators as needed...
 };
 
